@@ -6,57 +6,63 @@ import Icon from "../icon";
 import Arrow from "../arrow";
 import Action from "../action";
 
+import AnimateHeight from 'react-animate-height';
+
 class LibraryCourse extends Component {
+ constructor(props) {
+   super(props);
 
-  constructor(props) {
-    super(props)
+   this.setState = {
+     status: true,
+     height: 0
+   };
+ }
 
-    this.setState = {
-      status: true
-    }
-  }
+ handleCallback = function(status) {
+   let height = this.state.height == 0 ? 80 : 0;
+   if(!status) {
+     document.getElementById('library-course').classList.add('library-course-selected');
+   } else {
+     document.getElementById(this.id).classList.remove('library-course-selected');
+   }
+   this.setState({
+     status,
+     height
+   });
+ }.bind(this);
 
-  renderDescription = function() {
-    if(!this.setState.status) {
-      return (
-        <div className="library-course__description">
-        <label>Course Description</label>
-        <p>
-          { this.props.description }
-        </p>
-        </div>
-      )
-    }
-  }.bind(this);
+ render() {
+   this.Id = `library-course-${this.props.id}`
+   return (
+     <div id={this.id} className="library-course">
+       <div className="library-course__title-check">     
+         <label className="library-course__title">{ this.props.title }</label>
+         {Icon("fas fa-check", "library-course__icon")}
+       </div>
+       <div className="library-course__line"></div>
+       <Arrow
+         callback={status => this.handleCallback(status)}
+         id={this.props.id}
+         className="library-course__arrow"
+       />
+       <Action
+         onClick={() => this.props.toggleEnrolled(this.props.id)}
+         className="library-course__action"
+       />
 
-  handleCallback = function(status) {
-    if(!status) {
-      document.getElementById('library-course').classList.add('library-course-selected');
-    } else {
-      document.getElementById('library-course').classList.remove('library-course-selected');
-    }
-    this.setState({ status })
-  }.bind(this)
+       <AnimateHeight
+         duration={300}
+         height={this.state.height}
+       >
+         <div className="library-course__description">
+         <label>Course Description</label>
+         <p>{ this.props.description }</p>
+         </div>
+       </AnimateHeight>
 
-  render() {
-    return (
-      <div id="library-course" className="library-course">
-        <div className="library-course__title-check">      
-          <label className="library-course__title">{ this.props.title }</label>
-          {Icon("fas fa-check", "library-course__icon")}
-        </div>
-        <div className="library-course__line"></div>
-        <Arrow 
-          callback={status => this.handleCallback(status)} 
-          id={this.props.id} 
-          className="library-course__arrow" />
-        <Action 
-          onClick={() => this.props.toggleEnrolled(this.props.id)}
-          className="library-course__action"/>
-        { this.renderDescription() }
-      </div>
-    );
-  }
+     </div>
+   );
+ }
 }
 
 export default connect(null, actions)(LibraryCourse);

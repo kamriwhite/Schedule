@@ -46,8 +46,13 @@ class LibraryCourse extends Component {
           {Icon("fas fa-check", "library-course__icon")}
         </div>
         <div className="library-course__line"></div>
-        <Arrow callback={status => this.handleCallback(status)} id={this.props.id} className="library-course__arrow" />
-        <Action onClick={() => this.props.toggleEnrolled(this.props.id)}className="library-course__action"/>
+        <Arrow 
+          callback={status => this.handleCallback(status)} 
+          id={this.props.id} 
+          className="library-course__arrow" />
+        <Action 
+          onClick={() => this.props.toggleEnrolled(this.props.id)}
+          className="library-course__action"/>
         { this.renderDescription() }
       </div>
     );

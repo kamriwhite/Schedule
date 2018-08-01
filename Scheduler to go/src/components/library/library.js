@@ -23,8 +23,10 @@ class Library extends Component {
         console.log(this.props.courses);
         return (
             <div className="library">
-                <h1 className="library__title">Course Library</h1>
-              { this.renderCourses() }
+                <div className="library__container">
+                    <h1 className="library__container__title">Course Library</h1>
+                    { this.renderCourses() }
+                </div>
             </div>
         )
     }

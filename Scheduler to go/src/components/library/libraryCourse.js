@@ -31,36 +31,37 @@ class LibraryCourse extends Component {
    });
  }.bind(this);
 
- render() {
-   this.Id = `library-course-${this.props.id}`
-   return (
-     <div id={this.id} className="library-course">
-       <div className="library-course__title-check">     
-         <div className="library-course__title">{ this.props.title }</div>
-         {this.props.enrolled ? Icon("fas fa-check", "library-course__icon") : ''}
+render() {
+    this.id = `library-course-${this.props.id}`;
+    return (
+      <div id={this.id} className="library-course">
+        <div className="library-course__title-check">
+          <div className="library-course__title">{this.props.title}</div>
+          { this.props.enrolled ? Icon("fas fa-check", "library-course__icon") : ''}
         </div>
         <Arrow
-         callback={status => this.handleCallback(status)}
-         id={this.props.id}
-         className="library-course__arrow"
-       />
-       <Action
-         onClick={() => this.props.toggleEnrolled(this.props.id)}
-         className={`library-course__action ${this.props.enrolled ? 'action-remove' : ''}`}
-       />
-       <AnimateHeight
-         duration={300}
-         height={this.state.height}
-       >
-         <div className="library-course__description">
-         <label>Course Description</label>
-         <p>{ this.props.description }</p>
-         </div>
-       </AnimateHeight>
+          callback={status => this.handleCallback(status)}
+          id={this.props.id}
+          className="library-course__arrow"
+        />
+        <Action
+          id={this.props.id}
+          onClick={() => this.props.toggleEnrolled(this.props.id)}
+          className={`library-course__action ${this.props.enrolled ? 'action-remove' : ''}`}
+        />
+        <AnimateHeight
+          duration={300}
+          height={this.state.height}
+        >
+          <div className="library-course__description">
+          <label>Course Description</label>
+          <p>{ this.props.description }</p>
+          </div>
+        </AnimateHeight>
 
-     </div>
-   );
- }
+      </div>
+    );
+  }
 }
 
-export default connect(null, actions)(LibraryCourse);
+export default connect(null, actions)(LibraryCourse); 

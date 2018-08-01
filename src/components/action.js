@@ -26,7 +26,6 @@ class Action extends Component {
               id={this.id}
               onClick={() => this.handleAction()}
               className={`${this.props.className} action`}>
-
           </a>
       )
   }

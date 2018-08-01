@@ -8,5 +8,15 @@
     display: grid;
     grid-template-rows: 100px 1fr 1fr 1fr [progress-s] 76px [progress-e];
     grid-row-gap: 22px;
+    align-items: center;
+    justify-items: center;
     
+    &__title {
+        border-left: 1px solid $sGrey;
+        padding-left: 30px;
+        color: white;
+        font-family: $font-A;
+        font-size:20px;
+        text-align: center;
+    }
 }

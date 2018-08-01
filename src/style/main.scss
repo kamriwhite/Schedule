@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'gradient';
 @import 'library';
 @import 'libraryCourse';
 @import 'arrow';
@@ -12,27 +13,11 @@
     width: 100vw;
 
     display: grid;
-    grid-template-columns: [library-s] 1fr 1fr[library-e schedule-s] 1fr [schedule-e];
+    grid-template-columns: [library-s] 1fr 1fr[schedule-s] 50px [library-e] 1fr [schedule-e];
     grid-template-rows: 1fr;
 
 }
 
-.library {
-    grid-column: library-s/library-e;
-}
-
-.schedule {
-    grid-column: schedule-s/schedule-e;
-    position: relative;
-    height: 100%;
-    width: 100%;
-}
 
 
-.gradiant {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(120deg, $P 0%, $b 100%);
-    z-index: -10;
-}
+

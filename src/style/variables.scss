@@ -1,0 +1,17 @@
+$P: rgb(255, 0, 0);
+$b: rgb(255, 123, 0);
+$blue: #ffe600;
+$grey: #4d4d4d;
+$sGrey: rgba(255, 255, 255, .52);
+$sBlack:  #333;
+
+$font-A: 'Alegreya';
+$font-M: 'Montserrat';
+$font-L: 'Lato';
+
+@mixin border-left {
+    border-left: 2px solid rgb(173, 0, 0);
+    padding-left: 30px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}

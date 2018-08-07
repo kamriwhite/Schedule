@@ -1,4 +1,14 @@
 .action {
+    background-color: black;
+    font-size: 16px;
+    height: 32px;
+    width: 32px;
+    
+    border-radius: 16px;
+    position: relative;
+}
+
+.action {
     &:after,
     &:before {
         content: '';
